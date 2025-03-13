@@ -1,7 +1,4 @@
-// Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-  /* ----- Modal Handling ----- */
-
   // Daily Summary Modal
   const dailySummaryModal = document.getElementById("dailySummaryModal");
   const openDailySummary = document.getElementById("openDailySummary");
@@ -71,25 +68,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ----- Inventory Search ----- */
+  // Inventory Search
   const searchInput = document.getElementById("searchInput");
   const inventoryTable = document.getElementById("inventoryTable").getElementsByTagName("tbody")[0];
 
   searchInput.addEventListener("keyup", () => {
     const filter = searchInput.value.toLowerCase();
     const rows = inventoryTable.getElementsByTagName("tr");
-
     for (let i = 0; i < rows.length; i++) {
       const itemName = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
-      if (itemName.indexOf(filter) > -1) {
-        rows[i].style.display = "";
-      } else {
-        rows[i].style.display = "none";
-      }
+      rows[i].style.display = itemName.indexOf(filter) > -1 ? "" : "none";
     }
   });
 
-  /* ----- Close Modals on Outside Click ----- */
+  // Close modals when clicking outside
   window.addEventListener("click", (e) => {
     if (e.target === dailySummaryModal) {
       dailySummaryModal.style.display = "none";
