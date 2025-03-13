@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeDailySummary = document.getElementById("closeDailySummary");
 
   openDailySummary.addEventListener("click", () => {
-    dailySummaryModal.style.display = "block";
+    dailySummaryModal.style.display = "flex";
   });
   closeDailySummary.addEventListener("click", () => {
     dailySummaryModal.style.display = "none";
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const billResult = document.getElementById("billResult");
 
   openBills.addEventListener("click", () => {
-    billsModal.style.display = "block";
+    billsModal.style.display = "flex";
   });
   closeBills.addEventListener("click", () => {
     billsModal.style.display = "none";
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calcEqual = document.getElementById("calcEqual");
 
   openCalculator.addEventListener("click", () => {
-    calculatorModal.style.display = "block";
+    calculatorModal.style.display = "flex";
   });
   closeCalculator.addEventListener("click", () => {
     calculatorModal.style.display = "none";
@@ -81,14 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Close modals when clicking outside
+  // Close modals when clicking outside modal content
   window.addEventListener("click", (e) => {
-    if (e.target === dailySummaryModal) {
-      dailySummaryModal.style.display = "none";
-    } else if (e.target === billsModal) {
-      billsModal.style.display = "none";
-    } else if (e.target === calculatorModal) {
-      calculatorModal.style.display = "none";
+    if (e.target.classList.contains("modal")) {
+      e.target.style.display = "none";
     }
   });
 });
